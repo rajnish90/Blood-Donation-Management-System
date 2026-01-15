@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Management System</title>
+    <link rel="stylesheet" href="blood.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="sticky-header">
+        <div class="container header-content">
+            <div class="header-left">
+                <img src="blood logo.jpg" alt="BloodLink Logo" class="logo">
+                <h1><a href="#home">Blood Donation Management System</a></h1>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#donate" class="nav-link">Donate Blood</a></li>
+                    <li><a href="#search" class="nav-link">Search Blood</a></li>
+                    <li><a href="#request" class="nav-link">Request Blood</a></li>
+                    <li><a href="#facilities" class="nav-link">Facilities</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#contact" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>Give the Gift of Life: Donate Blood Today</h2>
+                <p>Connecting donors with patients in need, swiftly and efficiently. Your donation can save a life.</p>
+                <div class="hero-buttons">
+                    <button class="primary-button" onclick="window.location.href='#donate'">Become a Donor <i class="fas fa-hand-holding-medical"></i></button>
+                    <button class="secondary-button" onclick="window.location.href='#search'">Find Blood <i class="fas fa-tint"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="donate" class="form-section">
+            <div class="container">
+                <h2>Donor Registration</h2>
+                <p class="section-description">Register as a donor and help us maintain a healthy blood supply. Your details will be added to our searchable inventory.</p>
+                <form id="donorForm" novalidate>
+                    <label for="donorName">Full Name:</label>
+                    <input type="text" id="donorName" placeholder="e.g., Jane Doe" required>
+                    <div class="error-message"></div>
+
+                    <label for="donorBloodType">Blood Type:</label>
+                    <select id="donorBloodType" required>
+                        <option value="">Select Blood Type</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <div class="error-message"></div>
+
+                    <label for="donorContact">Contact Number:</label>
+                    <input type="tel" id="donorContact" pattern="[0-9]{10}" placeholder="e.g., 1234567890" required>
+                    <div class="error-message"></div>
+
+                    <label for="donorLocation">City/Area:</label>
+                    <input type="text" id="donorLocation" placeholder="e.g., Uttar Pradesh, U.P." required>
+                    <div class="error-message"></div>
+
+                    <button type="submit" class="submit-button">Register as Donor <i class="fas fa-user-plus"></i></button>
+                </form>
+                <div id="donorMessage" class="message"></div>
+            </div>
+        </section>
+
+        <section id="search" class="form-section">
+            <div class="container">
+                <h2>Search Blood Availability</h2>
+                <p class="section-description">Quickly find available blood units by type and location. See a list of donors who match your criteria.</p>
+                <form id="searchForm" novalidate>
+                    <label for="searchBloodType">Required Blood Type:</label>
+                    <select id="searchBloodType" required>
+                        <option value="">Select Blood Type</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <div class="error-message"></div>
+
+                    <label for="searchLocation">Location (optional):</label>
+                    <input type="text" id="searchLocation" placeholder="e.g., Delhi, DL">
+                    <div class="error-message"></div>
+
+                    <button type="submit" class="submit-button">Search for Donors <i class="fas fa-search"></i></button>
+                </form>
+                <h3>Available Donors:</h3>
+                <div id="searchResults" class="results-container">
+                    <p>No results yet. Please search for blood.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="request" class="form-section">
+            <div class="container">
+                <h2>Request Blood</h2>
+                <p class="section-description">Submit a blood request for a patient in urgent need. We'll connect you with potential donors.</p>
+                <form id="requestForm" novalidate>
+                    <label for="requestPatientName">Patient Name:</label>
+                    <input type="text" id="requestPatientName" placeholder="e.g., John Smith" required>
+                    <div class="error-message"></div>
+
+                    <label for="requestBloodType">Required Blood Type:</label>
+                    <select id="requestBloodType" required>
+                        <option value="">Select Blood Type</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                    <div class="error-message"></div>
+
+                    <label for="requestUnits">Units Required:</label>
+                    <input type="number" id="requestUnits" min="1" value="1" required>
+                    <div class="error-message"></div>
+
+                    <label for="requestContact">Contact Number:</label>
+                    <input type="tel" id="requestContact" pattern="[0-9]{10}" placeholder="e.g., 9876543210" required>
+                    <div class="error-message"></div>
+
+                    <label for="requestLocation">Hospital/Location:</label>
+                    <input type="text" id="requestLocation" placeholder="e.g., City Hospital" required>
+                    <div class="error-message"></div>
+
+                    <button type="submit" class="submit-button">Submit Request <i class="fas fa-paper-plane"></i></button>
+                </form>
+                <div id="requestMessage" class="message"></div>
+
+                <h3>Current Blood Requests:</h3>
+                <div id="currentRequests" class="results-container">
+                    <p>No blood requests at the moment.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="facilities" class="info-section">
+            <div class="container">
+                <h2>Our Facilities & Services</h2>
+                <p class="section-description">We offer a range of comprehensive services to ensure safe and efficient blood management, from collection to distribution.</p>
+                <div class="facility-grid">
+                    <div class="facility-item">
+                        <i class="fas fa-hospital-alt fa-3x facility-icon"></i>
+                        <h3>Advanced Collection Centers</h3>
+                        <p>State-of-the-art facilities ensuring hygienic and comfortable blood donation experiences.</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-microscope fa-3x facility-icon"></i>
+                        <h3>Rigorous Screening & Testing</h3>
+                        <p>Every unit undergoes extensive testing for safety, ensuring quality and preventing transfusion-transmitted diseases.</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-ambulance fa-3x facility-icon"></i>
+                        <h3>24/7 Emergency Support</h3>
+                        <p>Round-the-clock availability for critical blood requirements, ensuring timely delivery to hospitals.</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-hands-helping fa-3x facility-icon"></i>
+                        <h3>Community Outreach Programs</h3>
+                        <p>Engaging communities through awareness campaigns and mobile blood drives to encourage regular donations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="info-section">
+            <div class="container">
+                <h2>About BloodLife</h2>
+                <p class="section-description">BloodLife is dedicated to bridging the critical gap between generous blood donors and patients in urgent need. Our platform leverages technology to streamline the donation and request process, building a robust and responsive blood supply network that saves lives every day.</p>
+                <p>We believe in the power of collective action. Join us in our mission to ensure that no one suffers due to lack of blood. Every donation counts. Every life matters.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="form-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p class="section-description">Have questions, feedback, or need assistance? Our team is here to help. Reach out to us through the form below or our direct contact details.</p>
+                <form id="contactForm" novalidate>
+                    <label for="contactName">Your Name:</label>
+                    <input type="text" id="contactName" placeholder="Your Name" required>
+                    <div class="error-message"></div>
+
+                    <label for="contactEmail">Your Email:</label>
+                    <input type="email" id="contactEmail" placeholder="your@example.com" required>
+                    <div class="error-message"></div>
+
+                    <label for="contactSubject">Subject:</label>
+                    <input type="text" id="contactSubject" placeholder="e.g., Inquiry about donation" required>
+                    <div class="error-message"></div>
+
+                    <label for="contactMessage">Message:</label>
+                    <textarea id="contactMessage" rows="5" placeholder="Your message here..." required></textarea>
+                    <div class="error-message"></div>
+
+                    <button type="submit" class="submit-button">Send Message <i class="fas fa-envelope"></i></button>
+                </form>
+                <div id="contactMessageDiv" class="message"></div>
+                <div class="contact-details">
+                    <h3>Our Details:</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Pari Chowk, Greater Noida, 201013, Utttar Pradesh</p>
+                    <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +91 87099122461</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Email:</strong> rajnishrauniyar1@gmail.com</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col about-col">
+                <h3>About BloodLife</h3>
+                <p>Dedicated to connecting donors with patients, BloodLife streamlines the process of blood donation and retrieval, saving lives daily.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col links-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#search">Search</a></li>
+                    <li><a href="#request">Request</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-footer-col">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Pari Chowk, Greater Noida, 201013, Utttar Pradesh</p>
+                <p><i class="fas fa-phone"></i>+91 8709912461</p>
+                <p><i class="fas fa-envelope"></i> rajnishrauniyar1@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; <span id="currentYear"></span> BloodLife. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTopBtn" class="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="blood.js"></script>
+</body>
+</html>
